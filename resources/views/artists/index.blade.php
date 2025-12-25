@@ -4,6 +4,12 @@
     <section class="container mx-auto w-[80%]">
         <h1 class="text-2xl my-4">Artist List</h1>
 
+        <div class="my-2">
+            <a href="{{ route('artists.create') }}" class="px-4 py-2 border bg-blue-200">
+                + New Artist
+            </a>
+        </div>
+
         <table class="table border-2 border-amber-600">
             <thead>
                 <tr>
