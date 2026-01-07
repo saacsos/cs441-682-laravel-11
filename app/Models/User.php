@@ -11,8 +11,6 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
-
     /**
      * The attributes that are mass assignable.
      *
@@ -22,7 +20,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
+
+    use HasFactory, Notifiable;
 
     /**
      * The attributes that should be hidden for serialization.
@@ -50,5 +51,15 @@ class User extends Authenticatable
     public function playlists() : HasMany
     {
         return $this->hasMany(Playlist::class);
+    }
+
+    public function isAdmin() : bool
+    {
+        return $this->role === 'ADMIN';
+    }
+
+    public function isUser() : bool
+    {
+        return $this->role === 'USER';
     }
 }
